@@ -1,5 +1,7 @@
 import { Typography, Box, Container } from "@mui/material";
 
+import { Carousel } from "./Carousel";
+
 export const Banner = () => {
   return (
     <Box
@@ -21,7 +23,7 @@ export const Banner = () => {
           sx={{
             display: "flex",
             height: "40%",
-            marginBottom: 15,
+            // marginBottom: 15,
             flexDirection: "column",
             justifyContent: "center",
             textAlign: "center",
@@ -49,6 +51,7 @@ export const Banner = () => {
             Track the prices of popular Crypto Assets
           </Typography>
         </Box>
+        <Carousel />
       </Container>
     </Box>
   );

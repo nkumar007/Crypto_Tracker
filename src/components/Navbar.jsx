@@ -27,7 +27,7 @@ export const Navbar = () => {
             <Typography
               sx={{
                 flex: 1,
-                color: "gold",
+                color: "#00FF00",
                 fontFamily: "Montserrat",
                 fontWeight: "bold",
                 cursor: "pointer",
@@ -43,7 +43,6 @@ export const Navbar = () => {
               value={currency}
               onChange={(e) => {
                 setCurrency(e.target.value);
-                console.log(currency);
               }}
             >
               <MenuItem value="INR">INR</MenuItem>
