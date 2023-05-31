@@ -12,10 +12,10 @@ export const Banner = () => {
     >
       <Container
         sx={{
-          height: 400,
+          height: 500,
           display: "flex",
           flexDirection: "column",
-          paddingTop: 25,
+          paddingTop: 20,
           justifyContent: "space-around",
         }}
       >
