@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
@@ -25,6 +26,8 @@ export function numberWithCommas(x) {
 export const CoinsTable = () => {
   const { currency, symbol } = CryptoState();
 
+  const navigate = useNavigate();
+
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
@@ -36,8 +39,6 @@ export const CoinsTable = () => {
     setLoading(false);
     setCoins(data);
   };
-
-  console.log(coins);
 
   useEffect(() => {
     fetchCoins();
@@ -102,7 +103,7 @@ export const CoinsTable = () => {
                     const profit = row.price_change_percentage_24h > 0;
                     return (
                       <TableRow
-                        onClick={() => history.push(`/coins/${row.id}`)}
+                        onClick={() => navigate(`/coinpage/${row.id}`)}
                         sx={{
                           backgroundColor: "#16171a",
                           cursor: "pointer",
@@ -183,7 +184,7 @@ export const CoinsTable = () => {
           }}
           sx={{
             "& .MuiPaginationItem-root": {
-              color: "#00FF00",
+              color: "#00E600",
             },
           }}
           onChange={(_, value) => {
