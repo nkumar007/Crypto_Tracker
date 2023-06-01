@@ -3,16 +3,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
-import { CoinsPage } from "./pages/CoinsPage";
+import CoinPage from "./pages/CoinPage";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
       element: <Layout />,
       children: [
-        { path: "/homepage", element: <HomePage /> },
-        { path: "/coinpage/:id", element: <CoinsPage /> },
+        { path: "/", element: <HomePage /> },
+        { path: "/coinpage/:id", element: <CoinPage /> },
       ],
     },
   ]);

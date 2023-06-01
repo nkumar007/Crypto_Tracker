@@ -11,9 +11,7 @@ import { TrendingCoins } from "../../config/api";
 // context
 import { CryptoState } from "../../CryptoContext";
 
-export const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+import { numberWithCommas } from "../../utils";
 
 export const Carousel = () => {
   const [trending, setTrending] = useState([]);

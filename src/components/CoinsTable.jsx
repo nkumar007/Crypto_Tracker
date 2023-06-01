@@ -19,9 +19,7 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 
-export function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+import { numberWithCommas } from "../utils";
 
 export const CoinsTable = () => {
   const { currency, symbol } = CryptoState();
