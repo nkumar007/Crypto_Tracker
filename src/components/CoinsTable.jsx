@@ -76,7 +76,7 @@ export const CoinsTable = () => {
             <LinearProgress style={{ backgroundColor: "#00FF00" }} />
           ) : (
             <Table aria-label="simple table">
-              <TableHead style={{ backgroundColor: "#00E600" }}>
+              <TableHead style={{ backgroundColor: "#f0e400" }}>
                 <TableRow>
                   {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                     <TableCell
@@ -182,7 +182,7 @@ export const CoinsTable = () => {
           }}
           sx={{
             "& .MuiPaginationItem-root": {
-              color: "#00E600",
+              color: "#f0e400",
             },
           }}
           onChange={(_, value) => {
