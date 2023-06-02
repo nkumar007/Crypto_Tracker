@@ -3,7 +3,7 @@ import { styled } from "@mui/system";
 // eslint-disable-next-line react/prop-types
 const SelectButton = ({ children, selected, onClick }) => {
   const SelectButton = styled("span")({
-    border: "1px solid gold",
+    border: "1px solid #fff300",
     borderRadius: 5,
     padding: 10,
     paddingLeft: 20,
@@ -14,7 +14,7 @@ const SelectButton = ({ children, selected, onClick }) => {
     color: selected ? "black" : "",
     fontWeight: selected ? 700 : 500,
     "&:hover": {
-      backgroundColor: "gold",
+      backgroundColor: "#f0e400",
       color: "black",
     },
     width: "22%",
