@@ -40,7 +40,7 @@ export const Banner = () => {
             Crypto Tracker
           </Typography>
           <Typography
-            variant="subtitle2"
+            variant="subtitle1"
             sx={{
               color: "darkgrey",
               marginBottom: 15,
