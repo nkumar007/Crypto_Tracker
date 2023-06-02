@@ -27,7 +27,7 @@ export const Navbar = () => {
             <Typography
               sx={{
                 flex: 1,
-                color: "#00FF00",
+                color: "#fff300",
                 fontFamily: "Montserrat",
                 fontWeight: "bold",
                 cursor: "pointer",
