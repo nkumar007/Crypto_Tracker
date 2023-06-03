@@ -29,7 +29,7 @@ export const Carousel = () => {
     let profit = coin.price_change_percentage_24h >= 0;
     return (
       <Link
-        to={`/coins/${coin.id}`}
+        to={`/coinpage/${coin.id}`}
         key={coin.id}
         style={{
           display: "flex",
