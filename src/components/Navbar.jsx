@@ -10,6 +10,7 @@ import {
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
+import AuthModal from "./Authentication/AuthModal";
 
 export const Navbar = () => {
   const { currency, setCurrency } = CryptoState();
@@ -48,6 +49,7 @@ export const Navbar = () => {
               <MenuItem value="INR">INR</MenuItem>
               <MenuItem value="USD">USD</MenuItem>
             </Select>
+            <AuthModal />
           </Toolbar>
         </Container>
       </AppBar>
