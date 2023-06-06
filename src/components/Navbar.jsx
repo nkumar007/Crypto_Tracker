@@ -11,9 +11,10 @@ import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 import AuthModal from "./Authentication/AuthModal";
+import UserSidebar from "./Authentication/UserSidebar";
 
 export const Navbar = () => {
-  const { currency, setCurrency } = CryptoState();
+  const { currency, setCurrency, user } = CryptoState();
   const navigate = useNavigate();
   const darkTheme = createTheme({
     palette: {
@@ -49,7 +50,7 @@ export const Navbar = () => {
               <MenuItem value="INR">INR</MenuItem>
               <MenuItem value="USD">USD</MenuItem>
             </Select>
-            <AuthModal />
+            {user ? <UserSidebar /> : <AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>

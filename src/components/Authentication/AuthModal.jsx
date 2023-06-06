@@ -45,8 +45,6 @@ export default function AuthModal() {
     setValue(newValue);
   };
 
-  console.log(value);
-
   return (
     <div>
       <Button
