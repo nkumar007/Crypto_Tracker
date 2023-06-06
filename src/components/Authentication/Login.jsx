@@ -69,7 +69,7 @@ export const Login = ({ handleClose }) => {
         variant="contained"
         size="large"
         onClick={handleSubmit}
-        style={{ backgroundColor: "#EEBC1D" }}
+        style={{ backgroundColor: "#f0e400" }}
       >
         Login
       </Button>

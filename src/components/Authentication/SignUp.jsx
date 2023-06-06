@@ -81,7 +81,7 @@ export const SignUp = ({ handleClose }) => {
       <Button
         variant="contained"
         size="large"
-        style={{ backgroundColor: "#EEBC1D" }}
+        style={{ backgroundColor: "#f0e400" }}
         onClick={handleSubmit}
       >
         Sign Up
