@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import CoinPage from "./pages/CoinPage";
+import AlertComponent from "./components/AlertComponent";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
       }}
     >
       <RouterProvider router={router} />
+      <AlertComponent />
     </Box>
   );
 }
