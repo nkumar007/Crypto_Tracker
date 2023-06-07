@@ -5,6 +5,9 @@ import { FcGoogle } from "react-icons/fc";
 import Modal from "@mui/material/Modal";
 import { Login } from "./Login";
 import { SignUp } from "./SignUp";
+import { CryptoState } from "../../CryptoContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const theme = createTheme({
   palette: {
@@ -39,12 +42,37 @@ const style = {
 
 export default function AuthModal() {
   const [open, setOpen] = useState(false);
+
+  const { setAlert } = CryptoState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        setAlert({
+          open: true,
+          message: `Sign Up Successful. Welcome ${res.user.email}`,
+          type: "success",
+        });
+
+        handleClose();
+      })
+      .catch((error) => {
+        setAlert({
+          open: true,
+          message: error.message,
+          type: "error",
+        });
+        return;
+      });
   };
 
   return (
@@ -91,6 +119,7 @@ export default function AuthModal() {
           <Box sx={style.google}>
             <span>OR</span>
             <Button
+              onClick={signInWithGoogle}
               variant="contained"
               color="primary"
               size="large"
