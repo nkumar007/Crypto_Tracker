@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AppBar, Box, Button, Tab, Tabs, createTheme } from "@mui/material";
+import { FcGoogle } from "react-icons/fc";
 
 import Modal from "@mui/material/Modal";
 import { Login } from "./Login";
@@ -25,12 +26,13 @@ const style = {
     color: "white",
   },
   google: {
-    padding: 24,
+    padding: 14,
     paddingTop: 0,
     display: "flex",
     flexDirection: "column",
-    textAlign: "center",
-    gap: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 2,
     fontSize: 20,
   },
 };
@@ -86,6 +88,31 @@ export default function AuthModal() {
           </AppBar>
           {value === 0 && <Login handleClose={handleClose} />}
           {value === 1 && <SignUp handleClose={handleClose} />}
+          <Box sx={style.google}>
+            <span>OR</span>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              startIcon={<FcGoogle />}
+              sx={{
+                backgroundColor: "#db4a39",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#c53727",
+                },
+              }}
+            >
+              {value === 0 && (
+                <span style={{ minWidth: "250px" }}>Login in with Google</span>
+              )}
+              {value === 1 && (
+                <span style={{ minWidth: "250px" }}>
+                  Sign Up in with Google
+                </span>
+              )}
+            </Button>
+          </Box>
         </Box>
       </Modal>
     </div>
