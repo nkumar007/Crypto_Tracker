@@ -136,9 +136,7 @@ export default function AuthModal() {
                 <span style={{ minWidth: "250px" }}>Login in with Google</span>
               )}
               {value === 1 && (
-                <span style={{ minWidth: "250px" }}>
-                  Sign Up in with Google
-                </span>
+                <span style={{ minWidth: "250px" }}>Sign Up with Google</span>
               )}
             </Button>
           </Box>
