@@ -1,4 +1,4 @@
-import { LinearProgress, Typography } from "@mui/material";
+import { Button, LinearProgress, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import axios from "axios";
@@ -9,22 +9,14 @@ import { CoinInfo } from "../components/CoinInfo";
 import { SingleCoin } from "../config/api";
 import { numberWithCommas } from "../utils";
 import { CryptoState } from "../CryptoContext";
+import { doc, setDoc } from "@firebase/firestore";
+import { db } from "../firebase";
 
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
 
-  const { currency, symbol } = CryptoState();
-
-  const fetchCoin = async () => {
-    const { data } = await axios.get(SingleCoin(id));
-    setCoin(data);
-  };
-
-  useEffect(() => {
-    fetchCoin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { currency, symbol, user, watchlist, setAlert } = CryptoState();
 
   const ContainerDiv = styled("div")({
     display: "flex",
@@ -66,11 +58,12 @@ const CoinPage = () => {
     padding: 25,
     paddingTop: 10,
     width: "100%",
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+      alignItems: "center",
+    },
     "@media (max-width: 900px)": {
       display: "flex",
-      justifyContent: "space-around",
-    },
-    "@media (max-width: 600px)": {
       flexDirection: "column",
       alignItems: "center",
     },
@@ -78,6 +71,40 @@ const CoinPage = () => {
       alignItems: "start",
     },
   });
+
+  const fetchCoin = async () => {
+    const { data } = await axios.get(SingleCoin(id));
+    setCoin(data);
+  };
+
+  useEffect(() => {
+    fetchCoin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const inWatchlist = watchlist.includes(coin?.id);
+
+  const addToWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        { coins: watchlist ? [...watchlist, coin?.id] : [coin?.id] },
+        { merge: true }
+      );
+
+      setAlert({
+        open: true,
+        message: `${coin.name} Added to the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
 
   if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
 
@@ -165,6 +192,20 @@ const CoinPage = () => {
               M
             </Typography>
           </span>
+          {user && (
+            <Button
+              onClick={addToWatchlist}
+              variant="outlined"
+              style={{
+                width: "100%",
+                height: 40,
+                backgroundColor: "#f0e400",
+                color: "black",
+              }}
+            >
+              {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+            </Button>
+          )}
         </MarketData>
       </SidebarDiv>
       <CoinInfo coin={coin} />
