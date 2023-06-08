@@ -28,7 +28,7 @@ const Profile = styled("div")({
   height: "92%",
 });
 
-const Watchlist = styled("divc")({
+const Watchlist = styled("div")({
   flex: 1,
   width: "100%",
   backgroundColor: "grey",
@@ -46,6 +46,7 @@ const Coin = styled("div")({
   padding: 10,
   borderRadius: 5,
   color: "black",
+  fontSize: "1rem",
   width: "100%",
   display: "flex",
   justifyContent: "space-between",
@@ -60,6 +61,7 @@ const style = {
     width: "100%",
     backgroundColor: "#f0e400",
     marginTop: 20,
+    fontSize: "1rem",
   },
   picture: {
     width: 150,
@@ -75,8 +77,6 @@ export default function UserSidebar() {
     right: false,
   });
   const { user, setAlert, watchlist, coins, symbol } = CryptoState();
-
-  // console.log(watchlist, coins);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -169,7 +169,7 @@ export default function UserSidebar() {
                   {coins.map((coin) => {
                     if (watchlist.includes(coin.id))
                       return (
-                        <Coin>
+                        <Coin key={coin.id}>
                           <span>{coin.name}</span>
                           <span style={{ display: "flex", gap: 8 }}>
                             {symbol}
